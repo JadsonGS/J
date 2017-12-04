@@ -1,0 +1,13 @@
+import requests
+from bs4 import BeautifulSoup
+for i in range(42):
+    #42 é a solução de todos os problemas
+    #tem 242 páginas, usei o número 42 para totalizar os 500 itens
+    url = 'https://www.hotcourses.com.br/study/us-usa/international/schools-colleges-university/211/list.html?sortby=ALL&regionId=1&pageNo='+str(i)
+    p = requests.get(url)
+    s = BeautifulSoup(p.content, 'html.parser')
+    lista = s.findAll('div', {'class': 'sr_nam'})
+
+    for x in lista:
+        nome = x.find('h2').string
+        print(nome)
