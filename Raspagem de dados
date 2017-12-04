@@ -1,8 +1,14 @@
+'''para instalar o requests e outras ferramentas que usei nesse código
+no seu pc, é preciso ir no prompt de comando e digitar o seguinte comando:
+pip install beautifulsoup4 lxml requests'''
+
 import requests
 from bs4 import BeautifulSoup
 for i in range(42):
+    
     #42 é a solução de todos os problemas
     #tem 242 páginas, usei o número 42 para totalizar os 500 itens
+    
     url = 'https://www.hotcourses.com.br/study/us-usa/international/schools-colleges-university/211/list.html?sortby=ALL&regionId=1&pageNo='+str(i)
     p = requests.get(url)
     s = BeautifulSoup(p.content, 'html.parser')
@@ -11,3 +17,5 @@ for i in range(42):
     for x in lista:
         nome = x.find('h2').string
         print(nome)
+#esse código demora um pouco pra ser terminado pois ele faz várias leituras
+#é bom que se melhore ele, caso isso lhe incomode
